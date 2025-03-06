@@ -8,4 +8,4 @@ Amplify.configure(outputs);
 
 export const { StorageBrowser } = createStorageBrowser({
   config: createAmplifyAuthAdapter(),
-})
+});
