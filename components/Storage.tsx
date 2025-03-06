@@ -7,5 +7,5 @@ import outputs from '../amplify_outputs.json';
 Amplify.configure(outputs);
 
 export const { StorageBrowser } = createStorageBrowser({
-  config: createAmplifyAuthAdapter()
+  config: createAmplifyAuthAdapter(),
 })
