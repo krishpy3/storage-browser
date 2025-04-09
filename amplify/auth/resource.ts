@@ -18,8 +18,8 @@ export const auth = defineAuth({
           email: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
         }
       },
-      logoutUrls: ['https://main.d34g0pai70sxo.amplifyapp.com', 'http://localhost:5173/'],
-      callbackUrls: ['https://main.d34g0pai70sxo.amplifyapp.com', 'http://localhost:5173/'],
+      logoutUrls: ['https://main.d1sguwkm20evdw.amplifyapp.com', 'http://localhost:5173/'],
+      callbackUrls: ['https://main.d1sguwkm20evdw.amplifyapp.com', 'http://localhost:5173/'],
     },
   },
 });
