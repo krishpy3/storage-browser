@@ -26,8 +26,8 @@ import { referenceAuth } from '@aws-amplify/backend';
 
 export const auth = referenceAuth({
   userPoolId: 'us-east-1_BeuFo44Ef',
-  identityPoolId: 'us-east-1:a00ae641-b22c-4a90-b851-371df40ff3f4',
-  authRoleArn: 'arn:aws:iam::637423644627:role/amplify-d3lhnsq1zkfold-ma-amplifyAuthauthenticatedU-oT2sweB8RAnP',
-  unauthRoleArn: 'arn:aws:iam::637423644627:role/amplify-d3lhnsq1zkfold-ma-amplifyAuthunauthenticate-R7yQXRIokT9J',
+  identityPoolId: 'us-east-1:522c4f60-6398-43dd-ace6-28a6c2069ec6',
+  authRoleArn: 'arn:aws:iam::637423644627:role/Auth-CognitoRole',
+  unauthRoleArn: 'arn:aws:iam::637423644627:role/Auth-UnAuth-CognitoRole',
   userPoolClientId: '1qbcuqpdu1b4t0sdlr48uk18as',
 });
