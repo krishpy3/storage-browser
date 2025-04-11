@@ -7,7 +7,7 @@ import { Amplify } from "aws-amplify";
 import outputs from "../amplify_outputs.json";
 import '@aws-amplify/ui-react/styles.css';
 // Amplify.configure({
-//   ...outputs,
+//   // ...outputs,
 //   Auth: {
 //     Cognito: {
 //       userPoolId: "us-east-1_BeuFo44Ef",
@@ -30,6 +30,7 @@ import '@aws-amplify/ui-react/styles.css';
 //         requireNumbers: true,
 //         requireSpecialCharacters: true,
 //       },
+//       OAuth: 
 //     },
 //   },
 // });
