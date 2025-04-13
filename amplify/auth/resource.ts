@@ -11,15 +11,15 @@ export const auth = defineAuth({
       saml: {
         name: 'Azure2',
         metadata: {
-          metadataContent: 'https://login.microsoftonline.com/6c62ce1b-36c4-4f2d-a827-069c37e92080/federationmetadata/2007-06/federationmetadata.xml?appid=6f5f938a-ef6f-4410-98ff-55182070d2fc', // or content of the metadata file
+          metadataContent: 'https://login.microsoftonline.com/6c62ce1b-36c4-4f2d-a827-069c37e92080/federationmetadata/2007-06/federationmetadata.xml?appid=44302f3d-8474-4981-988d-0bc17cc1d193', // or content of the metadata file
           metadataType: 'URL',
         },
         attributeMapping: {
           email: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
         }
       },
-      logoutUrls: ['https://main.d3lhnsq1zkfold.amplifyapp.com'],
-      callbackUrls: ['https://main.d3lhnsq1zkfold.amplifyapp.com'],
+      logoutUrls: ['https://default-cognito.d9iyx4uow50qx.amplifyapp.com'],
+      callbackUrls: ['https://default-cognito.d9iyx4uow50qx.amplifyapp.com'],
     },
   },
 });
