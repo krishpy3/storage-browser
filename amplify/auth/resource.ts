@@ -29,5 +29,5 @@ export const auth = referenceAuth({
   identityPoolId: 'us-east-1:522c4f60-6398-43dd-ace6-28a6c2069ec6',
   authRoleArn: 'arn:aws:iam::637423644627:role/Auth-CognitoRole',
   unauthRoleArn: 'arn:aws:iam::637423644627:role/Auth-UnAuth-CognitoRole',
-  userPoolClientId: '3hqarhp02538n3rvbsnf0e83eq',
+  userPoolClientId: '28upfocfkagijkfgjvrtr3q445',
 });
