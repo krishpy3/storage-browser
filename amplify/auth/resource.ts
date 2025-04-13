@@ -18,8 +18,8 @@ export const auth = defineAuth({
           email: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
         }
       },
-      logoutUrls: ['https://default-cognito.d9iyx4uow50qx.amplifyapp.com'],
-      callbackUrls: ['https://default-cognito.d9iyx4uow50qx.amplifyapp.com'],
+      logoutUrls: ['https://default-cognito.d14p5z06ominpn.amplifyapp.com'],
+      callbackUrls: ['https://default-cognito.d14p5z06ominpn.amplifyapp.com'],
     },
   },
 });
