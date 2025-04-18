@@ -3,20 +3,19 @@ import { Effect, Policy, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { auth } from './auth/resource';
 import { data } from './data/resource';
-import { storage } from './storage/resource';
+import { BUCKET_NAME, BUCKET_REGION } from '../amplify-config'
 
 const backend = defineBackend({
   auth,
   data,
-  // storage,
 });
 
 const customBucketStack = backend.createStack("custom-bucket-stack");
 
 // Import existing bucket
 const customBucket = Bucket.fromBucketAttributes(customBucketStack, "MyCustomBucket", {
-  bucketArn: "arn:aws:s3:::baff-demo-storage-browser",
-  region: "us-east-1"
+  bucketArn: `arn:aws:s3:::${BUCKET_NAME}`,
+  region: BUCKET_REGION
 });
 
 backend.addOutput({
