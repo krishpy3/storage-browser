@@ -6,15 +6,11 @@ import { StorageBrowser } from "../components/Storage";
 
 function App() {
   useEffect(() => {
-    // Check if user is signed in
     getCurrentUser()
       .then(() => {
-        // User is signed in, fetch data
         console.log("User signed in")
-        
       })
       .catch(() => {
-        // Not signed in, redirect to sign in
         signInWithRedirect({ provider: { custom: "Azure" } });
       });
   }, []);
@@ -22,13 +18,6 @@ function App() {
   return (
     <main>
       <h1>Storage Browser</h1>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
-          Review next step of this tutorial.
-        </a>
-      </div>
 
       <StorageBrowser />
       <button onClick={() => signOut()}>
