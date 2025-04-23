@@ -36,13 +36,13 @@ function App() {
 
   return (
     <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
+      <h1>Storage Browser</h1>
+      {/* <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id} onClick={() => deleteTodo(todo.id)}>{todo.content}</li>
         ))}
-      </ul>
+      </ul> */}
       <div>
         🥳 App successfully hosted. Try creating a new todo.
         <br />
