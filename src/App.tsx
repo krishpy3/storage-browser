@@ -1,11 +1,8 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import { useEffect } from "react";
 import { getCurrentUser, signInWithRedirect, signOut } from "aws-amplify/auth";
 import { StorageBrowser } from "../components/Storage";
 
 
-const client = generateClient<Schema>();
 
 function App() {
   useEffect(() => {
