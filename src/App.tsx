@@ -8,16 +8,12 @@ import { StorageBrowser } from "../components/Storage";
 const client = generateClient<Schema>();
 
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
   useEffect(() => {
     // Check if user is signed in
     getCurrentUser()
       .then(() => {
         // User is signed in, fetch data
-        client.models.Todo.observeQuery().subscribe({
-          next: (data) => setTodos([...data.items]),
-        });
+        console.log("User signed in")
         
       })
       .catch(() => {
@@ -26,23 +22,9 @@ function App() {
       });
   }, []);
 
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
-  }
-
-  function deleteTodo(id: string) {
-    client.models.Todo.delete({id});
-  }
-
   return (
     <main>
       <h1>Storage Browser</h1>
-      {/* <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id} onClick={() => deleteTodo(todo.id)}>{todo.content}</li>
-        ))}
-      </ul> */}
       <div>
         🥳 App successfully hosted. Try creating a new todo.
         <br />
