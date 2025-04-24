@@ -20,15 +20,15 @@ function App() {
   }, []);
 
   if (isAuthenticated === null) {
-    return <p style={{ color: "white", textAlign: "center", marginTop: "100px" }}>Loading...</p>;
+    return <p>Loading...</p>;
   }
 
   return isAuthenticated ? (
-    <main style={styles.main}>
-      <h1 style={styles.heading}>Welcome, {userName}</h1>
-      <h2 style={styles.subheading}>Storage Browser</h2>
+    <main>
+      <h1>Welcome, {userName}</h1>
+      <h2>Storage Browser</h2>
       <StorageBrowser />
-      <button style={styles.signOutButton} onClick={() => signOut()}>
+      <button onClick={() => signOut()}>
         Sign out
       </button>
     </main>
@@ -36,33 +36,5 @@ function App() {
     <LandingPage />
   );
 }
-
-const styles = {
-  main: {
-    padding: "40px",
-    textAlign: "center" as const,
-    color: "white",
-    backgroundColor: "#0d1117",
-    minHeight: "100vh",
-  },
-  heading: {
-    fontSize: "2rem",
-    marginBottom: "0.5rem",
-  },
-  subheading: {
-    fontSize: "1.5rem",
-    marginBottom: "2rem",
-  },
-  signOutButton: {
-    marginTop: "30px",
-    padding: "12px 24px",
-    fontSize: "1rem",
-    backgroundColor: "#da3633",
-    color: "white",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-  },
-};
 
 export default App;

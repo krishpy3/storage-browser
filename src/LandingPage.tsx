@@ -32,6 +32,7 @@ const styles: { [key: string]: React.CSSProperties } = {
       padding: "20px"
     },
     contentBox: {
+      color: "white",
       maxWidth: "600px",
       textAlign: "center",
       backgroundColor: "#161b22",
