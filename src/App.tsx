@@ -19,15 +19,6 @@ function App() {
       });
   }, []);
 
-  const handleSignOut = async () => {
-    await signOut();
-
-    const tenantId = "6c62ce1b-36c4-4f2d-a827-069c37e92080"; // Replace with your tenant ID
-    const redirectUri = "https://default-cognito.d14p5z06ominpn.amplifyapp.com"; // Replace with your frontend URL
-    const logoutUrl = `https://login.microsoftonline.com/${tenantId}/oauth2/logout?post_logout_redirect_uri=${encodeURIComponent(redirectUri)}`;
-
-    window.location.href = logoutUrl;
-  };
   if (isAuthenticated === null) {
     return <p>Loading...</p>;
   }
@@ -37,7 +28,7 @@ function App() {
       <h1>Welcome, {userName}</h1>
       <h2>Storage Browser</h2>
       <StorageBrowser />
-      <button onClick={handleSignOut}>
+      <button onClick={() => signOut()}>
         Sign out
       </button>
     </main>
