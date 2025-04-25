@@ -19,6 +19,17 @@ function App() {
       });
   }, []);
 
+  const handleSignOut = async () => {
+    await signOut();
+
+    // const tenantId = ""; // Replace with your tenant ID
+    const redirectUri = "https://yourapp.com"; // Replace with your frontend URL
+    const logoutUrl = `https://login.microsoftonline.com/common/oauth2/logout?post_logout_redirect_uri=${encodeURIComponent(
+      redirectUri
+    )}`;
+
+    window.location.href = logoutUrl;
+  };
   if (isAuthenticated === null) {
     return <p>Loading...</p>;
   }
@@ -28,7 +39,7 @@ function App() {
       <h1>Welcome, {userName}</h1>
       <h2>Storage Browser</h2>
       <StorageBrowser />
-      <button onClick={() => signOut()}>
+      <button onClick={handleSignOut}>
         Sign out
       </button>
     </main>
