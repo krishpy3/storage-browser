@@ -11,8 +11,9 @@ function App() {
   useEffect(() => {
     console.log(window.location.pathname)
     if (window.location.pathname === "/logout/") {
-      const microsoftLogoutUrl = `https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/logout?post_logout_redirect_uri=${encodeURIComponent(AMPLIFY_URL)}`;
+      const microsoftLogoutUrl = `https://login.microsoftonline.com/${TENANT_ID}/oauth2/logout?post_logout_redirect_uri=${encodeURIComponent(AMPLIFY_URL)}`;
       window.location.href = microsoftLogoutUrl;
+      console.log(microsoftLogoutUrl)
       return;
     }
 
@@ -22,9 +23,6 @@ function App() {
         setIsAuthenticated(true);
         const name = user.username || user.signInDetails?.loginId || "User";
         setUserName(name);
-
-        const microsoftLogoutUrl = `https://login.microsoftonline.com/${TENANT_ID}/oauth2/logout?post_logout_redirect_uri=${encodeURIComponent(AMPLIFY_URL)}`;
-        console.log(microsoftLogoutUrl)
       })
       .catch(() => {
         setIsAuthenticated(false);
@@ -41,7 +39,6 @@ function App() {
       <h1>Welcome, {userName}</h1>
       <h2>Storage Browser</h2>
       <StorageBrowser />
-      {/* <button onClick={handleSignOut}> */}
       <button onClick={() => signOut()}>
         Sign out
       </button>
