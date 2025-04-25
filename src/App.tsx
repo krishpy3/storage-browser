@@ -8,7 +8,8 @@ function App() {
   const [userName, setUserName] = useState<string>("");
 
   useEffect(() => {
-    if (window.location.pathname === "/logout-complete") {
+    console.log(window.location.pathname)
+    if (window.location.pathname === "/logout-complete/") {
       const tenantId = "6c62ce1b-36c4-4f2d-a827-069c37e92080";
       const finalRedirectUri = "https://default-cognito.d14p5z06ominpn.amplifyapp.com";
 
@@ -23,7 +24,7 @@ function App() {
         setIsAuthenticated(true);
         const name = user.username || user.signInDetails?.loginId || "User";
         setUserName(name);
-        const redirectAfterCognito = "https://default-cognito.d14p5z06ominpn.amplifyapp.com/logout-complete";
+        const redirectAfterCognito = "https://default-cognito.d14p5z06ominpn.amplifyapp.com/logout-complete/";
         const cognitoLogoutUrl = `https://64d24683309ce5cfce78.auth.us-east-1.amazoncognito.com/logout?client_id=1j2u7spdithuthome35lh84pg1&logout_uri=${encodeURIComponent(redirectAfterCognito)}`;
         console.log(cognitoLogoutUrl)  
 
@@ -39,7 +40,7 @@ function App() {
   }, []);
 
   const handleSignOut = () => {
-    const redirectAfterCognito = "https://default-cognito.d14p5z06ominpn.amplifyapp.com/logout-complete";
+    const redirectAfterCognito = "https://default-cognito.d14p5z06ominpn.amplifyapp.com/logout-complete/";
     const cognitoLogoutUrl = `https://64d24683309ce5cfce78.auth.us-east-1.amazoncognito.com/logout?client_id=1j2u7spdithuthome35lh84pg1&logout_uri=${encodeURIComponent(redirectAfterCognito)}`;
     console.log(cognitoLogoutUrl)
     
