@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCurrentUser } from "aws-amplify/auth";
+import { getCurrentUser, signOut } from "aws-amplify/auth";
 import { StorageBrowser } from "../components/Storage";
 import LandingPage from "./LandingPage";
 
@@ -39,14 +39,14 @@ function App() {
       });
   }, []);
 
-  const handleSignOut = () => {
-    const redirectAfterCognito = "https://default-cognito.d14p5z06ominpn.amplifyapp.com/logout-complete/";
-    const cognitoLogoutUrl = `https://64d24683309ce5cfce78.auth.us-east-1.amazoncognito.com/logout?client_id=1j2u7spdithuthome35lh84pg1&logout_uri=${encodeURIComponent(redirectAfterCognito)}`;
-    console.log(cognitoLogoutUrl)
+  // const handleSignOut = () => {
+  //   const redirectAfterCognito = "https://default-cognito.d14p5z06ominpn.amplifyapp.com/logout-complete/";
+  //   const cognitoLogoutUrl = `https://64d24683309ce5cfce78.auth.us-east-1.amazoncognito.com/logout?client_id=1j2u7spdithuthome35lh84pg1&logout_uri=${encodeURIComponent(redirectAfterCognito)}`;
+  //   console.log(cognitoLogoutUrl)
     
 
-    window.location.href = cognitoLogoutUrl;
-  };
+  //   window.location.href = cognitoLogoutUrl;
+  // };
 
   if (isAuthenticated === null) {
     return <p>Loading...</p>;
@@ -57,7 +57,8 @@ function App() {
       <h1>Welcome, {userName}</h1>
       <h2>Storage Browser</h2>
       <StorageBrowser />
-      <button onClick={handleSignOut}>
+      {/* <button onClick={handleSignOut}> */}
+      <button onClick={() => signOut()}>
         Sign out
       </button>
     </main>
