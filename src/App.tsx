@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCurrentUser, signOut } from "aws-amplify/auth";
+import { getCurrentUser } from "aws-amplify/auth";
 import { StorageBrowser } from "../components/Storage";
 import LandingPage from "./LandingPage";
 
