@@ -33,6 +33,17 @@ backend.addOutput({
             authenticated: ["get", "list", "write", "delete"],
           },
         },
+      },
+      {
+        aws_region: customBucket.env.region,
+        bucket_name: "baff-demo-storage-browser2",
+        name: "bucket2",
+        paths: {
+          "public/*": {
+            guest: ["get", "list"],
+            authenticated: ["get", "list", "write", "delete"],
+          },
+        },
       }
     ]
   },
