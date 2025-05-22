@@ -1,11 +1,15 @@
 import { defineStorage } from '@aws-amplify/backend';
 
 export const storage = defineStorage({
-  name: 'myProjectFiles',
+  name: 'baff'
   access: (allow) => ({
-    'media/*': [
-      allow.groups(['auditor']).to(['read']),
-      allow.groups(['admin']).to(['read', 'write', 'delete'])
-    ]
+    'profile-pictures/{entity_id}/*': [
+      allow.guest.to(['read']),
+      allow.entity('identity').to(['read', 'write', 'delete'])
+    ],
+    'picture-submissions/*': [
+      allow.authenticated.to(['read','write']),
+      allow.guest.to(['read', 'write'])
+    ],
   })
 });
