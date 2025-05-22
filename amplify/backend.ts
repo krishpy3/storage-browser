@@ -2,7 +2,6 @@ import { defineBackend } from "@aws-amplify/backend";
 import { Effect, Policy, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { auth } from "./auth/resource";
-import { data } from "./data/resource";
 import { storage } from "./storage/resource";
 import { BUCKET_NAME, BUCKET_REGION } from "../amplify-config";
 
