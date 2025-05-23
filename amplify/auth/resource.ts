@@ -24,5 +24,5 @@ export const auth = defineAuth({
       logoutUrls: [AMPLIFY_URL + "/logout/"],
     },
   },
-  // groups: ['admin', 'auditor']
+  groups: ["admin", "auditor"],
 });
