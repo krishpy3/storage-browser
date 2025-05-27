@@ -34,8 +34,8 @@ backend.addOutput({
         paths: {
           "public/*": {
             guest: ["get", "list"],
-            authenticated: ["get", "list", "write", "delete"],
-            groupsadmin: ["get", "list"],
+            authenticated: ["get", "list"],
+            groupsadmin: ["get", "list", "write", "delete"],
           },
         },
       },
@@ -46,7 +46,7 @@ backend.addOutput({
         paths: {
           "public/*": {
             guest: ["get", "list"],
-            authenticated: ["get", "list", "write", "delete"],
+            authenticated: ["get", "list"],
             groupsadmin: ["get", "list", "write"],
           },
         },
@@ -55,7 +55,7 @@ backend.addOutput({
   },
 });
 
-const unauthPolicy = new Policy(backend.stack, "customBucketUnauthPolicy", {
+const authPolicy = new Policy(backend.stack, "customBucketAuthPolicy", {
   statements: [
     new PolicyStatement({
       effect: Effect.ALLOW,
@@ -75,7 +75,26 @@ const unauthPolicy = new Policy(backend.stack, "customBucketUnauthPolicy", {
   ],
 });
 
-// Add the policies to the unauthenticated user role
-backend.auth.resources.unauthenticatedUserIamRole.attachInlinePolicy(
-  unauthPolicy
-);
+const adminPolicy = new Policy(backend.stack, "customBucketAdminPolicy", {
+  statements: [
+    new PolicyStatement({
+      effect: Effect.ALLOW,
+      actions: ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
+      resources: [`${customBucket.bucketArn}/public/*`],
+    }),
+    new PolicyStatement({
+      effect: Effect.ALLOW,
+      actions: ["s3:ListBucket"],
+      resources: [`${customBucket.bucketArn}`, `${customBucket.bucketArn}/*`],
+      conditions: {
+        StringLike: {
+          "s3:prefix": ["public/*", "public/"],
+        },
+      },
+    }),
+  ],
+});
+// Add the policies to the authenticated user role
+backend.auth.resources.authenticatedUserIamRole.attachInlinePolicy(authPolicy);
+
+backend.auth.resources.groups["admin"].role.attachInlinePolicy(adminPolicy);
