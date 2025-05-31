@@ -35,7 +35,7 @@ backend.addOutput({
           "public/*": {
             guest: ["get", "list"],
             authenticated: ["get", "list"],
-            groupsadmin: ["get", "list", "write", "delete"],
+            groupsadmin: ["list", "write", "delete"],
           },
         },
       },
