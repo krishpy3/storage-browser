@@ -68,17 +68,12 @@ const adminPolicy = new Policy(backend.stack, "customBucketAdminPolicy", {
     new PolicyStatement({
       effect: Effect.ALLOW,
       actions: ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
-      resources: [`${customBucket.bucketArn}/public/*`],
+      resources: [`${customBucket.bucketArn}/*`],
     }),
     new PolicyStatement({
       effect: Effect.ALLOW,
       actions: ["s3:ListBucket"],
       resources: [`${customBucket.bucketArn}`, `${customBucket.bucketArn}/*`],
-      conditions: {
-        StringLike: {
-          "s3:prefix": ["public/*", "public/"],
-        },
-      },
     }),
   ],
 });
