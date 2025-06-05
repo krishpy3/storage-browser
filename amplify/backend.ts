@@ -23,9 +23,14 @@ const customBucket = Bucket.fromBucketAttributes(
 );
 
 customBucket.addCorsRule({
-  allowedMethods: [HttpMethods.GET, HttpMethods.PUT, HttpMethods.DELETE],
-  allowedOrigins: ["*"],
-  allowedHeaders: ["*"],
+  allowedMethods: [
+    HttpMethods.GET,
+    HttpMethods.PUT,
+    HttpMethods.POST,
+    HttpMethods.DELETE,
+  ],
+  allowedOrigins: ['*'],
+  allowedHeaders: ['*'],
 });
 
 backend.addOutput({
