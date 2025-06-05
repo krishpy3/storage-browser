@@ -1,5 +1,9 @@
-import { defineAuth } from "@aws-amplify/backend";
+import { defineAuth, defineFunction } from "@aws-amplify/backend";
 import { SAML_METADATA_URL, AMPLIFY_URL } from "../../amplify-config";
+
+const addToAuditor = defineFunction({
+  entry: "./add-to-auditor.ts",
+});
 
 /**
  * Define and configure your auth resource
@@ -25,4 +29,7 @@ export const auth = defineAuth({
     },
   },
   groups: ["admin", "auditor"],
+  triggers: {
+    postConfirmation: addToAuditor,
+  },
 });
