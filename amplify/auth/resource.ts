@@ -4,6 +4,8 @@ import { SAML_METADATA_URL, AMPLIFY_URL } from "../../amplify-config";
 const addToAuditor = defineFunction({
   entry: "./add-to-auditor.ts",
 });
+// When used in the triggers below, this function is automatically provisioned as
+// part of the auth resource; no extra import in backend.ts is required.
 
 /**
  * Define and configure your auth resource
