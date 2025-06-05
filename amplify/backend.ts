@@ -20,7 +20,7 @@ const customBucket = Bucket.fromBucketAttributes(
     bucketArn: `arn:aws:s3:::${BUCKET_NAME}`,
     region: BUCKET_REGION,
   }
-);
+) as Bucket;
 
 customBucket.addCorsRule({
   allowedMethods: [
