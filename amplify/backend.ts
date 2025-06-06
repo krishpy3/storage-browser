@@ -2,13 +2,23 @@ import { defineBackend } from "@aws-amplify/backend";
 import { Effect, Policy, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Bucket, HttpMethods } from "aws-cdk-lib/aws-s3";
 import { auth } from "./auth/resource";
+import { postAuthHandler } from "./functions/post-auth-handler/resource";
+import * as iam from "aws-cdk-lib/aws-iam";
 // import { storage } from "./storage/resource";
 import { BUCKET_NAME, BUCKET_REGION } from "../amplify-config";
 
 const backend = defineBackend({
   auth,
+  postAuthHandler,
   // storage,
 });
+
+const groupLambda = backend.postAuthHandler.resources.lambda;
+const policyStatement = new iam.PolicyStatement({
+  actions: ["cognito-idp:AdminAddUserToGroup"],
+  resources: ["*"],
+});
+groupLambda.addToRolePolicy(policyStatement);
 
 const customBucketStack = backend.createStack("custom-bucket-stack");
 

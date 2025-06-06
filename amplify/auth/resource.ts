@@ -1,13 +1,11 @@
-import { defineAuth, defineFunction } from "@aws-amplify/backend";
+import { defineAuth } from "@aws-amplify/backend";
+import { postAuthHandler } from "../functions/post-auth-handler/resource";
 import {
   SAML_METADATA_URL,
   AMPLIFY_URL,
   ATTRIBUTE_MAPPING,
 } from "../../amplify-config";
 
-const addToAuditor = defineFunction({
-  entry: "./add-to-auditor.ts",
-});
 // When used in the triggers below, this function is automatically provisioned as
 // part of the auth resource; no extra import in backend.ts is required.
 
@@ -33,6 +31,6 @@ export const auth = defineAuth({
   },
   groups: ["admin", "auditor"],
   triggers: {
-    postConfirmation: addToAuditor,
+    postConfirmation: postAuthHandler,
   },
 });
