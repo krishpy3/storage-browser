@@ -5,17 +5,22 @@ import {
 import { Handler } from "aws-lambda";
 
 export const handler: Handler = async (event) => {
-  console.log(event);
   const client = new CognitoIdentityProviderClient({});
   const { userPoolId, userName } = event;
   if (typeof userPoolId === "string" && typeof userName === "string") {
-    await client.send(
-      new AdminAddUserToGroupCommand({
-        UserPoolId: userPoolId,
-        Username: userName,
-        GroupName: "auditor",
-      })
-    );
+    const azureGroup = event.request?.userAttributes?.["custom:azure_group"] as
+      | string
+      | undefined;
+
+    if (azureGroup) {
+      await client.send(
+        new AdminAddUserToGroupCommand({
+          UserPoolId: userPoolId,
+          Username: userName,
+          GroupName: azureGroup,
+        })
+      );
+    }
   }
   return event;
 };

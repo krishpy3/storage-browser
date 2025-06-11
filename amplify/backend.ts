@@ -57,6 +57,7 @@ backend.addOutput({
             guest: ["get", "list"],
             authenticated: ["get", "list"],
             groupsadmin: ["list", "write", "delete"],
+            groupsauditor: ["list", "delete"],
           },
         },
       },
@@ -102,3 +103,5 @@ const adminPolicy = new Policy(backend.stack, "customBucketAdminPolicy", {
 backend.auth.resources.authenticatedUserIamRole.attachInlinePolicy(authPolicy);
 
 backend.auth.resources.groups["admin"].role.attachInlinePolicy(adminPolicy);
+backend.auth.resources.groups["auditor"].role.attachInlinePolicy(adminPolicy);
+
