@@ -29,7 +29,7 @@ export const auth = defineAuth({
       logoutUrls: [AMPLIFY_URL + "/logout/"],
     },
   },
-  groups: ["admin"],
+  groups: ["admin", "auditor"],
   triggers: {
     postConfirmation: postAuthHandler,
   },
