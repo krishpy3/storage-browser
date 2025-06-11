@@ -29,6 +29,11 @@ export const auth = defineAuth({
       logoutUrls: [AMPLIFY_URL + "/logout/"],
     },
   },
+  userAttributes: {
+    custom: {
+      azure_group: { type: "string", mutable: true },
+    },
+  },
   groups: ["admin", "auditor"],
   triggers: {
     postConfirmation: postAuthHandler,

@@ -18,6 +18,10 @@ User sign-up requests include an Azure Active Directory group claim. The
 post-confirmation Lambda adds each user to the corresponding Cognito group so
 permissions mirror their Azure AD assignments.
 
+The Cognito user pool defines a custom attribute `azure_group`. During SAML
+sign-in this attribute is populated from the Azure AD groups claim and later
+used by the post-confirmation function to place the user in the matching group.
+
 ## Deploying to AWS
 
 For detailed instructions on deploying your application, refer to the [deployment section](https://docs.amplify.aws/react/start/quickstart/#deploy-a-fullstack-app-to-aws) of our documentation.
