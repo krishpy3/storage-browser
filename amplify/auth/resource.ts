@@ -30,9 +30,13 @@ export const auth = defineAuth({
     },
   },
   userAttributes: {
-    custom: {
-      azure_group: { type: "string", mutable: true },
+     "custom:azure_group": {
+      dataType: "String",
+      mutable: true,
+      maxLen: 30,
+      minLen: 1,
     },
+
   },
   groups: ["admin", "auditor"],
   triggers: {
